@@ -136,7 +136,13 @@ $result = mysqli_query($con,"SELECT * FROM HANHKHACH WHERE pnr='".$_SESSION['use
                   <tr>
                     <td > <font style="font-family: Verdana;"> Họ tên</font>  </td>
                     <td colspan="3"> <?php echo ''. $row[2]. '   ' ?><br>
-                    <?php echo ' Age - '.$row[3] ?></td>
+                   
+                  </tr>
+
+                  <tr>
+                    <td > <font style="font-family: Verdana;"> Tuổi</font>  </td>
+                    <td colspan="3"> <?php echo ''. $row[3]. '   ' ?><br>
+                 
                   </tr>
                 
                   <tr>

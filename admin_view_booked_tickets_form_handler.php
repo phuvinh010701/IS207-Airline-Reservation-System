@@ -56,7 +56,7 @@
 
 				require_once('Database Connection file/mysqli_connect.php');
 
-				$query="SELECT pnr,NGAYDATVE,LOAIGHE,SOLUONGHANHKHACH,MAHOADON,MAKHACHHANG FROM CHITIETHOADON where MACHUYENBAY=? and NGAYBAY=?";
+				$query="SELECT pnr,NGAYDATVE,LOAIGHE,SOLUONGHANHKHACH,MAHOADON,MAKHACHHANG FROM CHITIETHOADON where MACHUYENBAY=? and NGAYBAY=? and TRANGTHAI=\"DA THANH TOAN\"";
 				$stmt=mysqli_prepare($dbc,$query);
 				mysqli_stmt_bind_param($stmt,"ss",$flight_no,$departure_date);
 				mysqli_stmt_execute($stmt);
