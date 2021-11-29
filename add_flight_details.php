@@ -106,7 +106,7 @@
 				</tr>
 				<tr>
 					<td class="fix_table"><input type="number" name="seats_eco" required></td>
-					<td class="fix_table"><input type="number"" name="seats_bus" required></td>
+					<td class="fix_table"><input type="number" name="seats_bus" required></td>
 				</tr>
 			</table>
 			<br>

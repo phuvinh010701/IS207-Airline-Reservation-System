@@ -49,77 +49,54 @@
 		<?php
 			if(isset($_POST['Submit']))
 			{
-				$data_missing=array();
-				if(empty($_POST['flight_no']))
-				{
-					$data_missing[]='Flight No.';
-				}
-				else
-				{
-					$flight_no=trim($_POST['flight_no']);
-				}
-				if(empty($_POST['departure_date']))
-				{
-					$data_missing[]='Departure Date';
-				}
-				else
-				{
-					$departure_date=$_POST['departure_date'];
-				}
+				
+				$flight_no=trim($_POST['flight_no']);
+			
+				$departure_date=$_POST['departure_date'];
 
-				if(empty($data_missing))
+				require_once('Database Connection file/mysqli_connect.php');
+
+				$query="SELECT pnr,NGAYDATVE,LOAIGHE,SOLUONGHANHKHACH,MAHOADON,MAKHACHHANG FROM CHITIETHOADON where MACHUYENBAY=? and NGAYBAY=?";
+				$stmt=mysqli_prepare($dbc,$query);
+				mysqli_stmt_bind_param($stmt,"ss",$flight_no,$departure_date);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt,$pnr,$date_of_reservation,$class,$no_of_passengers,$payment_id,$customer_id);
+				mysqli_stmt_store_result($stmt);
+
+				if(mysqli_stmt_num_rows($stmt)==0)
 				{
-					require_once('Database Connection file/mysqli_connect.php');
-					$query="SELECT pnr,date_of_reservation,class,no_of_passengers,payment_id,customer_id FROM Ticket_Details where flight_no=? and journey_date=? and booking_status='CONFIRMED' ORDER BY class";
-					$stmt=mysqli_prepare($dbc,$query);
-					mysqli_stmt_bind_param($stmt,"ss",$flight_no,$departure_date);
-					mysqli_stmt_execute($stmt);
-					mysqli_stmt_bind_result($stmt,$pnr,$date_of_reservation,$class,$no_of_passengers,$payment_id,$customer_id);
-					mysqli_stmt_store_result($stmt);
-					if(mysqli_stmt_num_rows($stmt)==0)
-					{
-						echo "<h3>Không có thông tin vé máy bay nào được đặt!</h3>";
-					}
-					else
-					{
-						echo "<center>";
-						echo "<table cellpadding=\"10\"";
-						echo "<tr><th>PNR</th>
-						<th>Ngày đặt</th>
-						<th>Loại ghế &nbsp;</th>
-						<th>Số hành khách &nbsp;</th>
-						<th>ID Thanh toán &nbsp;</th>
-						<th>ID khách hàng &nbsp;</th>
-						</tr>";
-						while(mysqli_stmt_fetch($stmt)) {
-        					echo "<tr>
-							<td>".$pnr." &nbsp;</td>
-							<td>".$date_of_reservation." &nbsp;</td>
-							<td>".$class." &nbsp;</td>
-							<td>".$no_of_passengers." &nbsp;</td>
-							<td>".$payment_id." &nbsp;</td>
-							<td>".$customer_id." &nbsp;</td>
-        					</tr>";
-    					}
-    					
-    				}
-					mysqli_stmt_close($stmt);
-					mysqli_close($dbc);
-					// else
-					// {
-					// 	echo "Submit Error";
-					// 	echo mysqli_error();
-					// }
+					echo "<h3>Không có thông tin vé máy bay nào được đặt!</h3>";
 				}
 				else
 				{
-					echo "The following data fields were empty! <br>";
-					foreach($data_missing as $missing)
-					{
-						echo $missing ."<br>";
+					echo "<div class=\"col-md-6 col-md-offset-4\">";
+					echo "<table cellpadding=\"10\" style=\"text-align: center\"";
+					echo "<tr><th>PNR</th>
+					<th>Ngày đặt</th>
+					<th>Loại ghế &nbsp;</th>
+					<th>Số hành khách &nbsp;</th>
+					<th>Mã thanh toán &nbsp;</th>
+					<th>Mã khách hàng &nbsp;</th>
+					</tr>";
+					while(mysqli_stmt_fetch($stmt)) {
+						echo "<tr>
+						<td>".$pnr." &nbsp;</td>
+						<td>".$date_of_reservation." &nbsp;</td>
+						<td>".$class." &nbsp;</td>
+						<td>".$no_of_passengers." &nbsp;</td>
+						<td>".$payment_id." &nbsp;</td>
+						<td>".$customer_id." &nbsp;</td>
+						</tr>";
 					}
+					echo "</div>";
+					
 				}
+				mysqli_stmt_close($stmt);
+				mysqli_close($dbc);
+				
 			}
+				
+		
 			else
 			{
 				echo "Submit request not received";
