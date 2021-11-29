@@ -1,0 +1,104 @@
+.page
+ {
+   width:auto;
+   height:auto;
+  
+ }
+
+.headerpart
+ {
+   overflow: hidden;
+   max-width: 100%;
+   height:200px;
+   background-color:rgb(12,100,198);
+   background-image:url('images/sky.jpg');
+   /* background-repeat:no-repeat; */
+   max-height: fit-content;
+ }
+
+.headerpart .col-md-4 img{
+   float: center;
+   padding-top: 5px;
+   max-width: 75%;
+ }
+
+ .headerpart .col-md-4 p{
+   font-size: 35px;
+   text-align: center;
+   padding-left: 100px;
+   color:#394ba0;
+ }
+
+.headerpart .col-md-8 p{
+   font-size: 4vw;
+   text-align: center;
+   color: red;
+   font-weight: bold;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.headerpart .col-md-8 h4{
+   text-align:  center;
+   font-size: 25px;
+}
+
+.topnav {
+   overflow: hidden;
+   background-color: #333;
+ }
+ 
+.topnav a {
+   float: left;
+   color: #f2f2f2;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 18px;
+ }
+ 
+ .topnav a:hover {
+   background-color: #ddd;
+   color: black;
+ }
+ 
+
+.topnav .col-md-5 marquee{
+   padding-top: 10px;
+   font-size: 20px;
+   color: yellow;
+}
+
+.topnav .col-md-7 {
+   padding: 0 !important;
+}
+
+.topnav .col-md-5 {
+   padding: 0 !important;
+}
+
+.pad3 {
+   text-align: center;
+   color: #FEF14D; 
+   font-size: 50px; 
+   padding: 0px 0px 10px; 
+   font-family: GraublauWebb;
+}
+
+.pad4 {
+   font-size: 20px
+}
+
+.pad5
+{
+   width:auto;
+   float: center;
+   height:35px;
+   margin-top:5px;
+   font-size: small;
+   background-color:rgb(12,100,198);
+}
+
+.pad5 p{
+   text-align: center;
+   font-size: small;
+}
