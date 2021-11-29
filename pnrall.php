@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$con=mysqli_connect("localhost","root","","airline_reservation");
+$con=mysqli_connect("localhost","root","","hangkhong");
 if(!isset($con))
 {
     die("Database Not Found");
@@ -15,7 +15,7 @@ if(isset($_REQUEST["u_sub"]))
 
  if($id!='')
  {
-   $query=mysqli_query($con ,"select * from passengers where pnr='".$id."'");
+   $query=mysqli_query($con ,"select * from HANHKHACH where pnr='".$id."'");
    $res=mysqli_fetch_row($query);
    $query0=mysqli_query($con ,"select * from ticket_details where pnr='".$id."'");
    $res0=mysqli_fetch_row($query0);

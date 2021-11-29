@@ -51,17 +51,14 @@
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
 				{
-					echo "<strong style='color:green; padding-left:20px;'>Lịch trình chuyến bay xóa thành công</strong>
-						<br>
-						<br>";
+					echo "<strong style='color:green; padding-left:20px;'>Xóa lịch trình chuyến bay thành công</strong>";
 				}
 				else if(isset($_GET['msg']) && $_GET['msg']=='failed')
 				{
-					echo "<strong style='color:red; padding-left:20px;'>Số chuyến bay hoặc ngày bay không hợp lệ, vui lòng nhập lại.</strong>
-						<br>
-						<br>";
+					echo "<strong style='color:red; padding-left:20px;'>Mã chuyến bay hoặc ngày bay không hợp lệ, vui lòng nhập lại.</strong>";
 				}
 			?>
+			<br>
 			<table cellpadding="5" style="padding-left: 20px;">
 				<tr>
 					<td class="fix_table">Nhập mã chuyến bay</td>

@@ -48,18 +48,20 @@
 				$flight_no=$_SESSION['flight_no'];
 				$journey_date=$_SESSION['journey_date'];
 				$no_of_pass=$_SESSION['no_of_pass'];
+
 				$total_no_of_meals=$_SESSION['total_no_of_meals'];
+
 				$payment_id=rand(100000000,999999999);
 				$pnr=$_SESSION['pnr'];
 				$_SESSION['payment_id']=$payment_id;
 				$payment_date=date('Y-m-d'); 
 				$_SESSION['payment_date']=$payment_date;
 
-
+				$ticket_price = 0;
 				require_once('Database Connection file/mysqli_connect.php');
 				if($_SESSION['class']=='economy')
 				{	
-					$query="SELECT price_economy FROM Flight_Details where flight_no=? and departure_date=?";
+					$query="SELECT GIAVEL1 FROM CHUYENBAY where MACHUYENBAY=? and NGAYBAY=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$flight_no,$journey_date);
 					mysqli_stmt_execute($stmt);
@@ -68,7 +70,7 @@
 				}
 				else if($_SESSION['class']=='business')
 				{
-					$query="SELECT price_business FROM Flight_Details where flight_no=? and departure_date=?";
+					$query="SELECT GIAVEL2 FROM CHUYENBAY where MACHUYENBAY=? and NGAYBAY=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$flight_no,$journey_date);
 					mysqli_stmt_execute($stmt);
@@ -78,10 +80,10 @@
 				mysqli_stmt_close($stmt);
 				mysqli_close($dbc);
 				$total_ticket_price=$no_of_pass*$ticket_price;
-				$total_meal_price=250*$total_no_of_meals;
+				$total_meal_price=25000*$total_no_of_meals;
 				if($_SESSION['insurance']=='yes')
 				{
-					$total_insurance_fee=100*$no_of_pass;
+					$total_insurance_fee=30000*$no_of_pass;
 				}
 				else
 				{
@@ -89,7 +91,7 @@
 				}
 				if($_SESSION['priority_checkin']=='yes')
 				{
-					$total_priority_checkin_fee=200*$no_of_pass;
+					$total_priority_checkin_fee=20000*$no_of_pass;
 				}
 				else
 				{
@@ -97,7 +99,7 @@
 				}
 				if($_SESSION['lounge_access']=='yes')
 				{
-					$total_lounge_access_fee=300*$no_of_pass;
+					$total_lounge_access_fee=30000*$no_of_pass;
 				}
 				else
 				{
@@ -149,7 +151,7 @@
 				echo "</table>";
 				echo "<hr style='margin-right:900px; margin-left: 50px'>";
 				echo "<br>";
-				# echo "<p style=\"margin-left:50px\">ID thanh toán của bạn là <strong>".$payment_id.".</strong> Vui lòng ghi chú lại để sử dụng.</p>";
+			
 				echo "<br>";
 			?>
 			<table cellpadding="5" style='margin-left: 50px'>

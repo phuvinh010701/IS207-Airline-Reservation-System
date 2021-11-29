@@ -42,19 +42,6 @@
 		<br>
 		<?php
 			echo "<h2>Chào bạn " .$_SESSION['login_user'].", chúng tôi có thể giúp gì cho bạn? </h2>";
-			require_once('Database Connection file/mysqli_connect.php');
-			$query="SELECT count(*),frequent_flier_no,mileage FROM Frequent_Flier_Details WHERE customer_id=?";
-			$stmt=mysqli_prepare($dbc,$query);
-			mysqli_stmt_bind_param($stmt,"s",$_SESSION['login_user']);
-			mysqli_stmt_execute($stmt);
-			mysqli_stmt_bind_result($stmt,$cnt,$frequent_flier_no,$mileage);
-			mysqli_stmt_fetch($stmt);
-			if($cnt==1)
-			{
-				echo "<h4 style='padding-left: 20px;'>Frequent Flier No.: ".$frequent_flier_no."&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Mileage: ".$mileage." points</h4><br>";
-			}
-			mysqli_stmt_close($stmt);
-			mysqli_close($dbc);
 		?>
 		<table cellpadding="5" style="font-size: 30px">
 			<tr>

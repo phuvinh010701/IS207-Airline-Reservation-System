@@ -46,15 +46,14 @@
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
 				{
-					echo "<strong style='color: green'>Thêm Chi thiết may bay thành công.</strong>
-						<br><br>";
+					echo "<strong style='color: green'>Thêm chi tiết may bay thành công.</strong>";
 				}
 				else if(isset($_GET['msg']) && $_GET['msg']=='failed')
 				{
-					echo "<strong style='color:red'>Đã có lỗi xảy ra vui lòng nhập lai.</strong>
-						<br><br>";
+					echo "<strong style='color:red'>Mã máy bay đã tồn tại.</strong>";
 				}
 			?>
+			<br>
 			<table cellpadding="5">
 				<tr>
 					<td class="fix_table">Mã máy bay</td>

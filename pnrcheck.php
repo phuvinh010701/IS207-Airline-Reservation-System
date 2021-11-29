@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     error_reporting(1);
   ?>
@@ -28,27 +29,28 @@
     </head>
   <?php
 
-$con=mysqli_connect("localhost","root","","airline_reservation");
-$q=mysqli_query($con,"select pnr,flight_no,journey_date, class, booking_status, no_of_passengers, lounge_access, priority_checkin, insurance, payment_id, customer_id from ticket_details where pnr='".$_SESSION['user']."'");
+$con=mysqli_connect("localhost","root","","HANGKHONG");
+$q=mysqli_query($con,"select pnr,MACHUYENBAY,NGAYBAY, LOAIGHE, TRANGTHAI, SOLUONGHANHKHACH, PHONGCHO, UUTIEN, BAOHIEM, MAHOADON, MAKHACHHANG from CHITIETHOADON where pnr='".$_SESSION['user']."'");
 $n=  mysqli_fetch_assoc($q);
 $stname= $n['pnr'];
-$flight_no= $n['flight_no'];
-$journey_date= $n['journey_date'];
-$class= $n['class'];
-$booking_status= $n['booking_status'];
-$no_of_passengers= $n['no_of_passengers'];
-$lounge_access= $n['lounge_access'];
-$priority_checkin= $n['priority_checkin'];
-$insurance= $n['insurance'];
-$payment_id= $n['payment_id'];
-$customer_id= $n['customer_id'];
+$flight_no= $n['MACHUYENBAY'];
+$journey_date= $n['NGAYBAY'];
+$class= $n['LOAIGHE'];
+$booking_status= $n['TRANGTHAI'];
+$no_of_passengers= $n['SOLUONGHANHKHACH'];
+$lounge_access= $n['PHONGCHO'];
+$priority_checkin= $n['UUTIEN'];
+$insurance= $n['BAOHIEM'];
+$payment_id= $n['MATHANHTOAN'];
+$customer_id= $n['MAKHACHHANG'];
+
 
 
 
 
 $id=$_SESSION['user'];
 
-$result = mysqli_query($con,"SELECT * FROM passengers WHERE pnr='".$_SESSION['user']."'");
+$result = mysqli_query($con,"SELECT * FROM HANHKHACH WHERE pnr='".$_SESSION['user']."'");
                     
                     while($row = mysqli_fetch_array($result))
                       {
@@ -106,7 +108,7 @@ $result = mysqli_query($con,"SELECT * FROM passengers WHERE pnr='".$_SESSION['us
                    <?php
                   
                     $picfile_path ='images/';
-                    $result1 = mysqli_query($con,"SELECT * FROM passengers where pnr='".$_SESSION['user']."'");
+                    $result1 = mysqli_query($con,"SELECT * FROM HANHKHACH where pnr='".$_SESSION['user']."'");
                    $row1 = mysqli_fetch_array($result1)  ; 
                     
                     

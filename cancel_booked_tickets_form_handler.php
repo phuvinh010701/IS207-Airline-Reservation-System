@@ -11,24 +11,17 @@
 		<?php
 			if(isset($_POST['Cancel_Ticket']))
 			{
-				$data_missing=array();
-				if(empty($_POST['pnr']))
-				{
-					$data_missing[]='PNR';
-				}
-				else
-				{
+				
 					$pnr=trim($_POST['pnr']);
-				}
+				
 
-				if(empty($data_missing))
-				{
+				
 					require_once('Database Connection file/mysqli_connect.php');
 
 					$todays_date=date('Y-m-d'); 
 					$customer_id=$_SESSION['login_user'];
 
-					$query="SELECT count(*) from Ticket_Details t WHERE pnr=? and journey_date>=?";
+					$query="SELECT count(*) from CHITIETHOADON t WHERE pnr=? and NGAYBAY>=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$pnr,$todays_date);
 					mysqli_stmt_execute($stmt);
@@ -40,7 +33,7 @@
 						mysqli_close($dbc);
 						header("location: cancel_booked_tickets.php?msg=failed");
 					}
-					$query="UPDATE Ticket_Details SET booking_status='CANCELED' WHERE pnr=? and customer_id=?";
+					$query="UPDATE CHITIETHOADON SET TRANGTHAI='HUY VE' WHERE pnr=? and MAKHACHHANG=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$pnr,$customer_id);
 					mysqli_stmt_execute($stmt);
@@ -52,7 +45,7 @@
 					mysqli_stmt_close($stmt);
 					if($affected_rows==1)
 					{
-						$query="SELECT t.flight_no,t.journey_date,t.no_of_passengers,t.class,0.85*p.payment_amount as refund_amount from Ticket_Details t,Payment_Details p WHERE t.pnr=? and t.pnr=p.pnr";
+						$query="SELECT t.MACHUYENBAY,t.NGAYBAY,t.SOLUONGHANHKHACH,t.LOAIGHE,0.85*p.SOTIEN as refund_amount from CHITIETHOADON t,HOADON p WHERE t.pnr=? and t.pnr=p.pnr";
 						$stmt=mysqli_prepare($dbc,$query);
 						mysqli_stmt_bind_param($stmt,"s",$pnr);
 						mysqli_stmt_execute($stmt);
@@ -62,7 +55,7 @@
 						$_SESSION['refund_amount']=$refund_amount;
 						if($class=='economy')
 						{
-							$query="UPDATE Flight_Details SET seats_economy=seats_economy+? WHERE flight_no=? AND departure_date=?";
+							$query="UPDATE CHUYENBAY SET SOGHEL1=SOGHEL1+? WHERE MACHUYENBAY=? AND NGAYBAY=?";
 							$stmt=mysqli_prepare($dbc,$query);
 							mysqli_stmt_bind_param($stmt,"iss",$no_of_pass,$flight_no,$journey_date);
 							mysqli_stmt_execute($stmt);
@@ -72,7 +65,7 @@
 						}
 						else if($class=='business')
 						{
-							$query="UPDATE Flight_Details SET seats_business=seats_business+? WHERE flight_no=? AND departure_date=?";
+							$query="UPDATE CHUYENBAY SET SOGHEL2=SOGHEL2+? WHERE MACHUYENBAY=? AND NGAYBAY=?";
 							$stmt=mysqli_prepare($dbc,$query);
 							mysqli_stmt_bind_param($stmt,"iss",$no_of_pass,$flight_no,$journey_date);
 							mysqli_stmt_execute($stmt);
@@ -99,15 +92,7 @@
 					}
 					mysqli_close($dbc);
 				}
-				else
-				{
-					echo "The following data fields were empty! <br>";
-					foreach($data_missing as $missing)
-					{
-						echo $missing ."<br>";
-					}
-				}
-			}
+
 			else
 			{
 				echo "Cancel request not received";

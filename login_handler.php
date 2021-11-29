@@ -16,7 +16,7 @@
 				if($user_type=='Customer')
 				{
 					require_once('Database Connection file/mysqli_connect.php');
-					$query="SELECT count(*) FROM Customer where customer_id=? and pwd=?";
+					$query="SELECT count(*) FROM KHACHHANG where MAKHACHHANG=? and PWD=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$user_name,$pass_word);
 					mysqli_stmt_execute($stmt);
@@ -39,7 +39,7 @@
 				else if($user_type=='Administrator')
 				{
 					require_once('Database Connection file/mysqli_connect.php');
-					$query="SELECT count(*) FROM Admin where admin_id=? and pwd=?";
+					$query="SELECT count(*) FROM NHANVIEN where MANHANVIEN=? and PWD=?";
 					$stmt=mysqli_prepare($dbc,$query);
 					mysqli_stmt_bind_param($stmt,"ss",$user_name,$pass_word);
 					mysqli_stmt_execute($stmt);

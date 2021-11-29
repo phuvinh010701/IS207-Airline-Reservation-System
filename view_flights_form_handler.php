@@ -50,165 +50,117 @@
 		<?php
 			if(isset($_POST['Search']))
 			{
-				$data_missing=array();
-				if(empty($_POST['origin']))
+				$origin=$_POST['origin'];
+				$destination=$_POST['destination'];
+				$dep_date=trim($_POST['dep_date']);
+				$no_of_pass=trim($_POST['no_of_pass']);
+				$class=trim($_POST['class']);
+				
+				$_SESSION['no_of_pass']=$no_of_pass;
+				$_SESSION['class']=$class;
+				$count=1;
+				$_SESSION['count']=$count;
+				$_SESSION['journey_date']=$dep_date;
+				require_once('Database Connection file/mysqli_connect.php');
+				if($class=="economy")
 				{
-					$data_missing[]='Nơi bay';
-				}
-				else
-				{
-					$origin=$_POST['origin'];
-				}
-				if(empty($_POST['destination']))
-				{
-					$data_missing[]='Nơi đến';
-				}
-				else
-				{
-					$destination=$_POST['destination'];
-				}
-
-				if(empty($_POST['dep_date']))
-				{
-					$data_missing[]='Ngày bay';
-				}
-				else
-				{
-					$dep_date=trim($_POST['dep_date']);
-				}
-				if(empty($_POST['no_of_pass']))
-				{
-					$data_missing[]='Số lượng hành khách';
-				}
-				else
-				{
-					$no_of_pass=trim($_POST['no_of_pass']);
-				}
-
-				if(empty($_POST['class']))
-				{
-					$data_missing[]='Loại ghế';
-				}
-				else
-				{
-					$class=trim($_POST['class']);
-				}
-
-				if(empty($data_missing))
-				{
-					$_SESSION['no_of_pass']=$no_of_pass;
-					$_SESSION['class']=$class;
-					$count=1;
-					$_SESSION['count']=$count;
-					$_SESSION['journey_date']=$dep_date;
-					require_once('Database Connection file/mysqli_connect.php');
-					if($class=="economy")
+					$query="SELECT MACHUYENBAY,NOIBAY,NOIDEN,NGAYBAY,GIOBAY,NGAYDEN,GIODEN,GIAVEL1 FROM CHUYENBAY where NOIBAY=? and NOIDEN=? and NGAYBAY=? and SOGHEL1>=? ORDER BY  GIOBAY";
+					$stmt=mysqli_prepare($dbc,$query);
+					mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
+					mysqli_stmt_execute($stmt);
+					mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_economy);
+					mysqli_stmt_store_result($stmt);
+					if(mysqli_stmt_num_rows($stmt)==0)
 					{
-						$query="SELECT flight_no,from_city,to_city,departure_date,departure_time,arrival_date,arrival_time,price_economy FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_economy>=? ORDER BY  departure_time";
-						$stmt=mysqli_prepare($dbc,$query);
-						mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
-						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_economy);
-						mysqli_stmt_store_result($stmt);
-						if(mysqli_stmt_num_rows($stmt)==0)
-						{
-							echo "<h3>Không có chuyến bay vào ngày này!</h3>";
-							echo "<a> <button onclick=\"location.href='book_tickets.php'\" type=\"button\">Chọn chuyến bay khác</button> </a>";						}
-						else
-						{
-							echo "<div class =\"col-md-6 col-md-offset-3 \">";
-							echo "<form action=\"book_tickets2.php\" method=\"post\">";
-							echo "<table cellpadding=\"10\"";
-							echo "<tr><th>Mã chuyến bay &nbsp;</th>
-							<th>Nơi đi &nbsp;</th>
-							<th>Nơi đến &nbsp;</th>
-							<th>Ngày bay &nbsp;  &nbsp;</th>
-							<th>Giờ bay &nbsp;</th>
-							<th>Ngày đến &nbsp;  &nbsp;</th>
-							<th>Giờ đến &nbsp;</th>
-							<th>Giá tiền &nbsp;</th>
-							<th>Chọn &nbsp;</th>
+						echo "<h3>Không có chuyến bay vào ngày này!</h3>";
+						echo "<a> <button onclick=\"location.href='book_tickets.php'\" type=\"button\">Chọn chuyến bay khác</button> </a>";						}
+					else
+					{
+						echo "<div class =\"col-md-6 col-md-offset-3 \">";
+						echo "<form action=\"book_tickets2.php\" method=\"post\">";
+						echo "<table cellpadding=\"10\"";
+						echo "<tr><th>Mã chuyến bay &nbsp;</th>
+						<th>Nơi đi &nbsp;</th>
+						<th>Nơi đến &nbsp;</th>
+						<th>Ngày bay &nbsp;  &nbsp;</th>
+						<th>Giờ bay &nbsp;</th>
+						<th>Ngày đến &nbsp;  &nbsp;</th>
+						<th>Giờ đến &nbsp;</th>
+						<th>Giá tiền &nbsp;</th>
+						<th>Chọn &nbsp;</th>
+						</tr>";
+						while(mysqli_stmt_fetch($stmt)) {
+							echo "<tr>
+							<td>".$flight_no."</td>
+							<td>".$from_city."</td>
+							<td>".$to_city."</td>
+							<td>".$departure_date."</td>
+							<td>".$departure_time."</td>
+							<td>".$arrival_date."</td>
+							<td>".$arrival_time."</td>
+							<td>&#x20b9; ".$price_economy."</td>
+							<center>
+							<td><input type=\"radio\" name=\"select_flight\" value=\"".$flight_no."\"></td>
+							</center>
 							</tr>";
-							while(mysqli_stmt_fetch($stmt)) {
-        						echo "<tr>
-        						<td>".$flight_no."</td>
-        						<td>".$from_city."</td>
-								<td>".$to_city."</td>
-								<td>".$departure_date."</td>
-								<td>".$departure_time."</td>
-								<td>".$arrival_date."</td>
-								<td>".$arrival_time."</td>
-								<td>&#x20b9; ".$price_economy."</td>
-								<center>
-								<td><input type=\"radio\" name=\"select_flight\" value=\"".$flight_no."\"></td>
-								</center>
-        						</tr>";
-    						}
-    						echo "</table> <br>";
-							
-    						echo "<input type=\"submit\" value=\"Chọn chuyến bay\" name=\"Select\">";
-    						echo "</form>";
-							echo "</div>";
-    					}
+						}
+						echo "</table> <br>";
+						
+						echo "<input type=\"submit\" value=\"Chọn chuyến bay\" name=\"Select\">";
+						echo "</form>";
+						echo "</div>";
 					}
-					else if($class="business")
-					{
-						$query="SELECT flight_no,from_city,to_city,departure_date,departure_time,arrival_date,arrival_time,price_business FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_business>=? ORDER BY  departure_time";
-						$stmt=mysqli_prepare($dbc,$query);
-						mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
-						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_business);
-						mysqli_stmt_store_result($stmt);
-						if(mysqli_stmt_num_rows($stmt)==0)
-						{
-							echo "<h3>Không có chuyến bay vào ngày này!</h3>";
-							echo "<a> <button onclick=\"location.href='book_tickets.php'\" type=\"button\">Chọn chuyến bay khác</button> </a>";						}
-						else
-						{
-							echo "<div class =\"col-md-6 col-md-offset-3 \">";
-							echo "<form action=\"book_tickets2.php\" method=\"post\">";
-							echo "<table cellpadding=\"10\"";
-							echo "<tr><th>Mã chuyến bay &nbsp;</th>
-							<th>Nơi đi &nbsp;</th>
-							<th>Nơi đến &nbsp;</th>
-							<th>Ngày bay &nbsp;  &nbsp;</th>
-							<th>Giờ bay &nbsp;</th>
-							<th>Ngày đến &nbsp;  &nbsp;</th>
-							<th>Giờ đến &nbsp;</th>
-							<th>Giá tiền &nbsp;</th>
-							<th>Chọn &nbsp;</th>
-							</tr>";
-							while(mysqli_stmt_fetch($stmt)) {
-        						echo "<tr>
-        						<td>".$flight_no."</td>
-        						<td>".$from_city."</td>
-								<td>".$to_city."</td>
-								<td>".$departure_date."</td>
-								<td>".$departure_time."</td>
-								<td>".$arrival_date."</td>
-								<td>".$arrival_time."</td>
-								<td>&#x20b9; ".$price_business."</td>
-								<td><input type=\"radio\" name=\"select_flight\" value=".$flight_no."></td>
-        						</tr>";
-    						}
-    						echo "</table> <br>";
-    						echo "<input type=\"submit\" value=\"Chọn chuyến bay\" name=\"Select\">";
-    						echo "</form>";
-    					}
-					}	
-					mysqli_stmt_close($stmt);
-					mysqli_close($dbc);
 				}
-				else
+					
+				else if($class="business")
 				{
-					echo "Thông tin không hợp lệ <br>";
-					foreach($data_missing as $missing)
+					$query="SELECT MACHUYENBAY,NOIBAY,NOIDEN,NGAYBAY,GIOBAY,NGAYDEN,GIODEN,GIAVEL2 FROM CHUYENBAY where NOIBAY=? and NOIDEN=? and NGAYBAY=? and SOGHEL2>=? ORDER BY  GIOBAY";
+					$stmt=mysqli_prepare($dbc,$query);
+					mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
+					mysqli_stmt_execute($stmt);
+					mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_business);
+					mysqli_stmt_store_result($stmt);
+					if(mysqli_stmt_num_rows($stmt)==0)
 					{
-						echo $missing ."<br>";
+						echo "<h3>Không có chuyến bay vào ngày này!</h3>";
+						echo "<a> <button onclick=\"location.href='book_tickets.php'\" type=\"button\">Chọn chuyến bay khác</button> </a>";						}
+					else
+					{
+						echo "<div class =\"col-md-6 col-md-offset-3 \">";
+						echo "<form action=\"book_tickets2.php\" method=\"post\">";
+						echo "<table cellpadding=\"10\"";
+						echo "<tr><th>Mã chuyến bay &nbsp;</th>
+						<th>Nơi đi &nbsp;</th>
+						<th>Nơi đến &nbsp;</th>
+						<th>Ngày bay &nbsp;  &nbsp;</th>
+						<th>Giờ bay &nbsp;</th>
+						<th>Ngày đến &nbsp;  &nbsp;</th>
+						<th>Giờ đến &nbsp;</th>
+						<th>Giá tiền &nbsp;</th>
+						<th>Chọn &nbsp;</th>
+						</tr>";
+						while(mysqli_stmt_fetch($stmt)) {
+							echo "<tr>
+							<td>".$flight_no."</td>
+							<td>".$from_city."</td>
+							<td>".$to_city."</td>
+							<td>".$departure_date."</td>
+							<td>".$departure_time."</td>
+							<td>".$arrival_date."</td>
+							<td>".$arrival_time."</td>
+							<td>&#x20b9; ".$price_business."</td>
+							<td><input type=\"radio\" name=\"select_flight\" value=".$flight_no."></td>
+							</tr>";
+						}
+						echo "</table> <br>";
+						echo "<input type=\"submit\" value=\"Chọn chuyến bay\" name=\"Select\">";
+						echo "</form>";
 					}
-					echo "<a> <button onclick=\"location.href='book_tickets.php'\" type=\"button\">Chọn chuyến bay khác</button> </a>";
-				}
+				}	
+				mysqli_stmt_close($stmt);
+				mysqli_close($dbc);
 			}
+				
 			else
 			{
 				echo "Search request not received";

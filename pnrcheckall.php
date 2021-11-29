@@ -3,13 +3,13 @@
     session_start();
     error_reporting(0);
 
-$con=mysqli_connect("localhost","root","","airline_reservation");
-$q=mysqli_query($con,"select pnr from ticket_details where pnr='".$_SESSION['user']."'");
+$con=mysqli_connect("localhost","root","","HANGKHONG");
+$q=mysqli_query($con,"select pnr from CHITIETHOADON where pnr='".$_SESSION['user']."'");
 $n=  mysqli_fetch_assoc($q);
 $stname= $n['pnr'];
 $id=$_SESSION['user'];
 
-$result = mysqli_query($con,"SELECT * FROM passengers WHERE pnr='".$_SESSION['user']."'");
+$result = mysqli_query($con,"SELECT * FROM HANHKHACH WHERE pnr='".$_SESSION['user']."'");
                     
                     while($row = mysqli_fetch_array($result))
                       {
@@ -63,7 +63,7 @@ $result = mysqli_query($con,"SELECT * FROM passengers WHERE pnr='".$_SESSION['us
                   
                     $picfile_path ='images/';
                     
-                    $result1 = mysqli_query($con,"SELECT * FROM passengers where ='".$_SESSION['user']."'");
+                    $result1 = mysqli_query($con,"SELECT * FROM HANHKHACH where ='".$_SESSION['user']."'");
                         
                     
                     

@@ -45,17 +45,14 @@
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
 				{
-					echo "<strong style='color: green'>Lịch trình chuyến bay đã được thêm thành công.</strong>
-						<br>
-						<br>";
+					echo "<strong style='color: green'>Lịch trình chuyến bay đã được thêm thành công.</strong>";
 				}
 				else if(isset($_GET['msg']) && $_GET['msg']=='failed')
 				{
-					echo "<strong style='color: red'>Thêm lịch trình chuyến bay thất bại, vui lòng nhập lại.</strong>
-						<br>
-						<br>";
+					echo "<strong style='color: red'>Thêm lịch trình chuyến bay thất bại, vui lòng nhập lại.</strong>";
 				}
 			?>
+			<br>
 			<table cellpadding="5">
 				<tr>
 					<td class="fix_table">Mã chuyến bay</td>
@@ -145,9 +142,6 @@
 			<br>
 			<input type="submit" value="Đồng ý" name="Submit">
 		</form>
-		<!--check out addling local host in links and other places
-
-		-->
 		</div>
 	</body>
 </html>

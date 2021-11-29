@@ -47,10 +47,10 @@
 		<div>
 		<div class="topnav">
 			<div class="col-md-7">
-			<a class="fa fa-home" aria-hidden="true" href="customer_homepage.php" style="background-color: #04AA6D;">Cá nhân</a>
-			<a class="fa fa-money" aria-hidden="true" href="index.html">Khuyến mãi</a>
-			<a class="fa fa-phone" aria-hidden="true" href="index.html">Liên hệ</a>
-			<a class="fa fa-sign-out" aria-hidden="true" href="index.html">Đăng xuất</a>
+			<a class="fa fa-home" aria-hidden="true" href="customer_homepage.php" style="background-color: #04AA6D;"> Cá nhân</a>
+			<a class="fa fa-money" aria-hidden="true" href="index.html"> Khuyến mãi</a>
+			<a class="fa fa-phone" aria-hidden="true" href="index.html"> Liên hệ</a>
+			<a class="fa fa-sign-out" aria-hidden="true" href="index.html"> Đăng xuất</a>
     		</div>
 		</div>
 		<br>
@@ -60,7 +60,6 @@
 			$count=$_SESSION['count'];
 			$flight_no=$_POST['select_flight'];
 			$_SESSION['flight_no']=$flight_no;
-			
 			echo "<div class=\" col-md-10 col-md-offset-3 \">";
 			echo "<h2>Thêm thông tin khách hàng</h2>";
 			echo "<form action=\"add_ticket_details_form_handler.php\" method=\"post\">";

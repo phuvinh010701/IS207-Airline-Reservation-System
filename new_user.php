@@ -45,6 +45,15 @@
 		<form class="center_form" action="new_user_form_handler.php" method="POST" id="new_user_from">
 			<h2><i class="fa fa-user-plus" aria-hidden="true"></i> TẠO TÀI KHOẢN MỚI</h2>
 			<br>
+			<?php
+					if(isset($_GET['msg']) && $_GET['msg']=='failed')
+					{
+						echo "
+						<strong style='color:red'>Tài khoản này đã tồn tại.</strong>
+						";
+					}
+			?>
+			<br>
 			<table cellpadding='10'>
 				<strong>Thông tin đăng nhập</strong>
 				<tr>

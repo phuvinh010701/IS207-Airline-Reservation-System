@@ -45,17 +45,14 @@
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
 				{
-					echo "<strong style='color: green'>Kích hoạt thành công.</strong>
-						<br>
-						<br>";
+					echo "<strong style='color: green'>Kích hoạt thành công.</strong>";
 				}
 				else if(isset($_GET['msg']) && $_GET['msg']=='failed')
 				{
-					echo "<strong style='color:red'>Đã có lỗi xảy ra vui lòng nhập lại.</strong>
-						<br>
-						<br>";
+					echo "<strong style='color:red'>Không có mã máy bay hoặc máy bay đã kích hoạt.</strong>";
 				}
 			?>
+			<br>
 			<table cellpadding="5" style="padding-left: 20px;">
 				<tr>
 					<td class="fix_table">Nhập mã máy bay</td>
