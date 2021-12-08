@@ -48,6 +48,10 @@
 				</td>
 			</tr>
 			<tr>
+				<td class="admin_func"><a href="delete_jet_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Xóa chi tiết máy bay</a>
+				</td>
+			</tr>
+			<tr>
 				<td class="admin_func"><a href="activate_jet_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Kích hoạt máy bay</a>
 				</td>
 			</tr>
@@ -55,10 +59,7 @@
 				<td class="admin_func"><a href="deactivate_jet_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Hủy kích hoạt máy bay</a>
 				</td>
 			</tr>
-			<tr>
-				<td class="admin_func"><a href="admin_statitics.php"><i class="fa fa-plane" aria-hidden="true"></i> Thống kê</a>
-				</td>
-			</tr>
+			
 		</table>
 	</body>
 </html>
