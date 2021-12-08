@@ -15,23 +15,19 @@
 
  		if($id!='')
  		{
-   			$query=mysqli_query($con ,"select * from HANHKHACH where pnr='".$id."'");
-   			$res=mysqli_fetch_row($query);
-   			$query0=mysqli_query($con ,"select * from CHITIETHOADON where pnr='".$id."'");
-   			$res0=mysqli_fetch_row($query0);
-   			$query1=mysqli_query($con ,"select * from HOADON where pnr='".$id."'");
-   			$res1=mysqli_fetch_row($query1);
-		
-   			if($res && $res0 && $res1)
-   			{
-   		 		$_SESSION['user']=$id;
+			$str_query="SELECT * FROM CHITIETHOADON INNER JOIN HANHKHACH WHERE CHITIETHOADON.TRANGTHAI = \"DA THANH TOAN\" 
+			AND HANHKHACH.PNR = CHITIETHOADON.PNR AND CHITIETHOADON.MAKHACHHANG= '" .$_SESSION['login_user']. "'" . "AND CHITIETHOADON.PNR='" .$id ."'";
+			$result = mysqli_query($con, $str_query);
+			$row = mysqli_fetch_row($result);
+			if ($row){
+				$_SESSION['user']=$id;
     			header('location:pnrcheck.php');
-   			}
+			}
    			else
   			{		
     
 				echo '<script>';
-				echo 'alert("Invalid username or password")';
+				echo 'alert("Mã PNR không hợp lệ")';
 				echo '</script>';
    			}
 		}
@@ -65,7 +61,6 @@
 		<img class="logo" src="images/my-logo.png"/> 
 		<h1 id="title">
 			Phòng vé Đà Lạt PV	</h1>
-		<div>
 		<div class="topnav">
 			<div class="col-md-7">
 			<a class="fa fa-home" aria-hidden="true" href="customer_homepage.php" style="background-color: #04AA6D;">Cá nhân</a>

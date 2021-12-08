@@ -34,7 +34,7 @@
 			<a class="fa fa-ticket" aria-hidden="true" href="login_page.php"> Đặt vé</a>
 			<a class="fa fa-home" aria-hidden="true" href="index.html"> Khuyến mãi</a>
 			<a class="fa fa-sign-in" aria-hidden="true" href="login_page.php"> Đăng nhập</a>
-			<a class="fa fa-user-plus" aria-hidden="true" href="new_user.php.html"> Đăng ký</a>
+			<a class="fa fa-user-plus" aria-hidden="true" href="new_user.php"> Đăng ký</a>
 			<a class="fa fa-phone" aria-hidden="true" href="index.html"> Liên hệ</a>
     		</div>
 		</div>

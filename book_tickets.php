@@ -62,20 +62,32 @@
 				</tr>
 				<tr>
 					<td class="fix_table">
-						<input list="origins" name="origin" placeholder="From" required>
-  						<datalist id="origins">
-  						  	<option value="hcm">
-  						</datalist>
+						<select name="origin">
+						<?php
+							require_once('Database Connection file/mysqli_connect.php');
+							$sql = "SELECT DISTINCT NOIBAY from CHUYENBAY";
+							$result = mysqli_query($dbc, $sql);
+							while ($row = mysqli_fetch_row($result)){
+								echo "<option value=\"". $row[0]. "\">";
+								echo $row[0] . "</option>";
+							}
+							echo "</select>";
+						?>
+						</select>
 					</td>
 					<td class="fix_table">
-						<input list="destinations" name="destination" placeholder="To" required>
-  						<datalist id="destinations">
-  						  	<option value="Đà Lạt">
-  						  	<option value="Đà Nẵng">
-  						  	<option value="Hải Phòng">
-  						  	<option value="Hà Nội">
-  						  	<option value="Cần Thơ">
-  						</datalist>
+						<select name="destination">
+						<?php
+							require_once('Database Connection file/mysqli_connect.php');
+							$sql = "SELECT DISTINCT NOIDEN from CHUYENBAY";
+							$result = mysqli_query($dbc, $sql);
+							while ($row = mysqli_fetch_row($result)){
+								echo "<option value=\"". $row[0]. "\">";
+								echo $row[0] . "</option>";
+							}
+							echo "</select>";
+						?>
+						</select>
 					</td>
 				</tr>
 			</table>

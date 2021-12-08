@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<title>
-			Deactivate Aircraft
+			Hủy kích hoạt
 		</title>
 		<style>
 			input {
@@ -59,7 +59,20 @@
 					<td class="fix_table">Nhập mã máy bay</td>
 				</tr>
 				<tr>
-					<td class="fix_table"><input type="text" name="jet_id" required></td>
+					<td class="fix_table">
+					<select name="jet_id">
+						<?php
+							require_once('Database Connection file/mysqli_connect.php');
+
+							$query = "SELECT MAMAYBAY FROM CHITIETMAYBAY WHERE TRANGTHAI='yes'";
+							$result = mysqli_query($dbc, $query);
+							while ($row = mysqli_fetch_row($result)){
+								echo "<option value=\"". $row[0]. "\">";
+								echo $row[0] . "</option>";
+							}
+						?>
+					</select>
+					</td>
 				</tr>
 			</table>
 			<br>

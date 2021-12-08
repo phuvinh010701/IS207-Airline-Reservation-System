@@ -1,74 +1,40 @@
 <?php
-session_start();
+    session_start();
 
-$con=mysqli_connect("localhost","root","","hangkhong");
-if(!isset($con))
-{
-    die("Database Not Found");
-}
+    $con=mysqli_connect("localhost","root","","hangkhong");
+    if(!isset($con))
+    {
+        die("Database Not Found");
+    }
 
 
 if(isset($_REQUEST["u_sub"]))
 {
     
- $id=$_POST['pnr'];
+    $id=$_POST['pnr'];
 
- if($id!='')
- {
-   $query=mysqli_query($con ,"select * from HANHKHACH where pnr='".$id."'");
-   $res=mysqli_fetch_row($query);
-   $query0=mysqli_query($con ,"select * from ticket_details where pnr='".$id."'");
-   $res0=mysqli_fetch_row($query0);
-   $query1=mysqli_query($con ,"select * from payment_details where pnr='".$id."'");
-   $res1=mysqli_fetch_row($query1);
-
-   if($res)
-   {
-    $_SESSION['user']=$id;
-    header('location:pnrcheckall.php');
-   }
-   else
-   {
-    
-    echo '<script>';
-    echo 'alert("Wrong PNR Number")';
-    echo '</script>';
-   }
-if($res0)
-   {
-    $_SESSION['user']=$id;
-    header('location:pnrcheckall.php');
-   }
-   else
-   {
-    
-    echo '<script>';
-    echo 'alert("Wrong PNR Number")';
-    echo '</script>';
-   }
-
-
-   
-   if($res1)
-   {
-    $_SESSION['user']=$id;
-    header('location:pnrcheckall.php');
-   }
-   else
-   {
-    
-    echo '<script>';
-    echo 'alert("Wrong PNR Number")';
-    echo '</script>';
-   }
-  }
- else
- {
-     echo '<script>';
-    echo 'alert("Wrong PNR Number")';
-    echo '</script>';
- 
- }
+    if($id!='')
+    {
+        
+        $query = "SELECT * FROM HANHKHACH INNER JOIN chitiethoadon WHERE chitiethoadon.pnr = hanhkhach.PNR
+        AND chitiethoadon.TRANGTHAI =\"DA THANH TOAN\" AND hanhkhach.pnr='".$id."'";
+        $result = mysqli_query($con, $query);
+        $res = mysqli_fetch_row(mysqli_query($con, $query));
+        if ($res){
+            $_SESSION['user']=$id;
+            header('location:pnrcheckall.php');
+        }
+        else{
+            echo '<script>';
+            echo 'alert("Mã PNR không hợp lệ")';
+            echo '</script>';
+        }
+    }
+    else{
+        echo '<script>';
+        echo 'alert("Mã PNR không hợp lệ")';
+        echo '</script>';
+    } 
 }
 ?>
 

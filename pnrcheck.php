@@ -7,7 +7,7 @@
   <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <title>In vé</title>
         
          <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
          <link rel="stylesheet" href="bootstrap/bootstrap-theme.min.css">

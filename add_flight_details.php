@@ -7,6 +7,7 @@
 			Thêm lịch trình chuyến bay
 		</title>
 		<style>
+			
 			input {
     			border: 1.5px solid #030337;
     			border-radius: 4px;
@@ -135,7 +136,20 @@
 				</tr>
 				<tr>
 					<td class="fix_table">
-						<input type="text" name="jet_id" required>
+						<select name="jet_id">
+						<?php
+							require_once('Database Connection file/mysqli_connect.php');
+
+							$query = "SELECT MAMAYBAY FROM CHITIETMAYBAY";
+							$result = mysqli_query($dbc, $query);
+							while ($row = mysqli_fetch_row($result)){
+								echo "<option value=\"". $row[0]. "\">";
+								echo $row[0] . "</option>";
+							}
+
+						?>
+					</select>	
+						<!-- <input type="text" name="jet_id" required> -->
 					</td>
 				</tr>
 			</table>

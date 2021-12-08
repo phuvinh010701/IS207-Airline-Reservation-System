@@ -22,7 +22,7 @@
 			table {
 			 border-collapse: collapse; 
 			}
-			tr/*:nth-child(3)*/ {
+			tr {
 			 border: solid thin;
 			}
 		</style>

@@ -3,7 +3,7 @@
 ?>
 <html>
 	<head>
-		<title>Activate Aircraft</title>
+		<title>Kích hoạt chuyến bay</title>
 	</head>
 	<body>
 		<?php

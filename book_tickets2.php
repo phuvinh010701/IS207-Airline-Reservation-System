@@ -94,7 +94,7 @@
 					echo "<br><hr>";
 					$count=$count+1;
 				}
-				// echo "<br><h2>Chi tiết chuyến bay</h2>";
+				
 				echo "<h2> Chi tiết chuyến bay </h2>";
 				echo "<table cellpadding=\"5\">";
 				echo "<tr>";

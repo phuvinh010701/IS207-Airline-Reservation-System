@@ -29,23 +29,6 @@
 		<table cellpadding="5" style="font-size: 30px">
 			
 
-			<!-- <tr>
-				<td class="admin_func"><a href="book_tickets.php"><i class="fa fa-plane" aria-hidden="true"></i> Đặt vé máy bay</a>
-				</td>
-			</tr>
-			<tr>
-				<td class="admin_func"><a href="view_booked_tickets.php"><i class="fa fa-plane" aria-hidden="true"></i> Xem các vé máy bay đã đặt</a>
-				</td>
-			</tr>
-			<tr>
-				<td class="admin_func"><a href="pnr.php"><i class="fa fa-plane" aria-hidden="true"></i> In vé máy bay</a>
-				</td>
-			</tr>
-			<tr>
-				<td class="admin_func"><a href="cancel_booked_tickets.php"><i class="fa fa-plane" aria-hidden="true"></i> Hủy chuyến</a>
-				</td>
-			</tr> -->
-
 
 			<tr>
 				<td class="admin_func"><a href="admin_view_booked_tickets.php"><i class="fa fa-plane" aria-hidden="true"></i> Xem danh sách các vé đã đặt</a>
@@ -55,10 +38,7 @@
 				<td class="admin_func"><a href="add_flight_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Thêm lịch trình chuyến bay</a>
 				</td>
 			</tr>
-			<!-- <tr>
-				<td class="admin_func"><a href="modify_flight_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Modify Flight Schedule Details</a>
-				</td>
-			</tr> -->
+			
 			<tr>
 				<td class="admin_func"><a href="delete_flight_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Xóa lịch trình chuyến bay</a>
 				</td>
@@ -73,6 +53,10 @@
 			</tr>
 			<tr>
 				<td class="admin_func"><a href="deactivate_jet_details.php"><i class="fa fa-plane" aria-hidden="true"></i> Hủy kích hoạt máy bay</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="admin_func"><a href="admin_statitics.php"><i class="fa fa-plane" aria-hidden="true"></i> Thống kê</a>
 				</td>
 			</tr>
 		</table>

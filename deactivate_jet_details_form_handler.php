@@ -3,7 +3,9 @@
 ?>
 <html>
 	<head>
-		<title>Deactivate Aircraft</title>
+		<title>
+			Hủy kích hoạt
+		</title>
 	</head>
 	<body>
 		<?php

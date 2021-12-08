@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<title>
-			Cancel Booked Tickets
+			Hủy vé
 		</title>
 	</head>
 	<body>
@@ -13,9 +13,7 @@
 			{
 				
 					$pnr=trim($_POST['pnr']);
-				
 
-				
 					require_once('Database Connection file/mysqli_connect.php');
 
 					$todays_date=date('Y-m-d'); 
@@ -38,10 +36,6 @@
 					mysqli_stmt_bind_param($stmt,"ss",$pnr,$customer_id);
 					mysqli_stmt_execute($stmt);
 					$affected_rows=mysqli_stmt_affected_rows($stmt);
-					//echo $affected_rows."<br>";
-					// mysqli_stmt_bind_result($stmt,$cnt);
-					// mysqli_stmt_fetch($stmt);
-					// echo $cnt;
 					mysqli_stmt_close($stmt);
 					if($affected_rows==1)
 					{

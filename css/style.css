@@ -94,3 +94,9 @@ h2{
 .login_form{
 	float: left; 
 }
+
+select {
+	border: 1.5px solid #030337;
+	border-radius: 4px;
+	padding: 7px 30px;
+}

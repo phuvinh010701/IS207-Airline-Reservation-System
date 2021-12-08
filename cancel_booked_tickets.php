@@ -15,9 +15,7 @@
 			input[type=submit] {
 				background-color: #030337;
 				color: white;
-    			border-radius: 4px;
-    			/* padding: 7px 45px; */
-    			
+    			border-radius: 4px;   			
 			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>

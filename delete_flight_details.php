@@ -7,11 +7,7 @@
 			Xoá lịch trình chuyến bay
 		</title>
 		<style>
-			input {
-    			border: 1.5px solid #030337;
-    			border-radius: 4px;
-    			padding: 7px 10px;
-			}
+			
 			input[type=submit] {
 				background-color: #030337;
 				color: white;
@@ -65,7 +61,22 @@
 					<td class="fix_table">Nhập ngày bay</td>
 				</tr>
 				<tr>
-					<td class="fix_table"><input type="text" name="flight_no" required></td>
+					<td class="fix_table">
+					<select name="flight_no">
+						<?php
+							require_once('Database Connection file/mysqli_connect.php');
+
+							$query = "SELECT MACHUYENBAY FROM CHUYENBAY";
+							$result = mysqli_query($dbc, $query);
+							while ($row = mysqli_fetch_row($result)){
+								echo "<option value=\"". $row[0]. "\">";
+								echo $row[0] . "</option>";
+							}
+
+						?>
+					</select>	
+
+					</td>
 					<td class="fix_table"><input type="date" name="departure_date" required></td>
 				</tr>
 			</table>
