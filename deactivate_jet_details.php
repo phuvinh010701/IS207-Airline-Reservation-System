@@ -17,7 +17,7 @@
 				color: white;
     			border-radius: 4px;
     			padding: 7px 45px;
-    			margin: 0px 67px
+    			margin: 0px 60px
 			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -41,7 +41,7 @@
 		<br>
 		<div class="col-md-4 col-md-offset-5">
 		<form action="deactivate_jet_details_form_handler.php" method="post">
-			<h2>Hủy kích hoạt máy bay</h2>
+			<h2 style="margin-left: -40px">Hủy kích hoạt máy bay</h2>
 			<div>
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
@@ -56,11 +56,11 @@
 			<BR>
 			<table cellpadding="5" style="padding-left: 20px;">
 				<tr>
-					<td class="fix_table">Nhập mã máy bay</td>
+					<td class="fix_table"><a1 style="margin-left:60px"> Nhập mã máy bay </a1></td>
 				</tr>
 				<tr>
 					<td class="fix_table">
-					<select name="jet_id">
+					<select name="jet_id" style="padding: 7px 55px; margin: 0px 40px">
 						<?php
 							require_once('Database Connection file/mysqli_connect.php');
 
@@ -76,7 +76,7 @@
 				</tr>
 			</table>
 			<br>
-			<input type="submit" value="Hủy kích hoạt" name="Deactivate">
+			<input type="submit" value="Đồng ý" name="Deactivate">
 			</div>
 		</form>
 		</div>	

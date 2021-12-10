@@ -56,11 +56,11 @@
 			<br>
 			<table cellpadding="5">
 				<tr>
-					<td class="fix_table">Nhập mã máy bay</td>
+					<td class="fix_table"> <a1 style="margin-left:60px"> Nhập mã máy bay </a1></td>
 				</tr>
 				<tr>
 					<td class="fix_table">
-					<select name="jet_id">
+					<select name="jet_id" style="padding: 7px 55px; margin: 0px 40px">
 						<?php
 							require_once('Database Connection file/mysqli_connect.php');
 

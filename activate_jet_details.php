@@ -17,13 +17,14 @@
 				color: white;
     			border-radius: 4px;
     			padding: 7px 45px;
-    			margin: 0px 67px
+    			margin: 0px 60px
 			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="styles.css"></link>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
 	</head>
 	
 	<body style="background: url('images/1.jpg'); ">
@@ -40,7 +41,7 @@
 		<br>
 		<div class="col-md-4 col-md-offset-5">  
 		<form action="activate_jet_details_form_handler.php" method="post">
-			<h2>Nhập máy bay cần hoạt động</h2>
+			<h2 style="margin-left: -50px">Nhập máy bay cần hoạt động</h2>
 			<div>
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
@@ -53,14 +54,13 @@
 				}
 			?>
 			<br>
-			<table cellpadding="5" style="padding-left: 20px;">
+			<table cellpadding="5">
 				<tr>
-					<td class="fix_table">Nhập mã máy bay</td>
+					<td class="fix_table"><a1 style="margin-left:60px"> Nhập mã máy bay </a1></td>
 				</tr>
 				<tr>
 					<td class="fix_table">
-
-					<select name="jet_id">
+					<select name="jet_id" style="padding: 7px 55px; margin: 0px 40px">
 						<?php
 							require_once('Database Connection file/mysqli_connect.php');
 
@@ -76,7 +76,7 @@
 				</tr>
 			</table>
 			<br>
-			<input type="submit" value="Kích hoạt" name="Activate">
+			<input type="submit" value="Đồng ý" name="Activate">
 			</div>
 		</form>
 		</div>
