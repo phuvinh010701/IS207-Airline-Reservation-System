@@ -50,7 +50,7 @@
 				}
 				else if(isset($_GET['msg']) && $_GET['msg']=='failed')
 				{
-					echo "<strong style='color:red'>Mã máy bay không tồn tại hoặc đã kích hoạt.</strong>";
+					echo "<strong style='color:red'>Mã máy bay không tồn tại hoặc đã hủy kích hoạt.</strong>";
 				}
 			?>
 			<BR>
