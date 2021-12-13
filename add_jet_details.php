@@ -41,7 +41,7 @@
 		<br>
 		<div class="col-md-4 col-md-offset-5">
 		<form action="add_jet_details_form_handler.php" method="post">
-			<h2>Nhập chi tiết chuyến bay</h2>
+			<h2>Nhập chi tiết máy bay</h2>
 			<div>
 			<?php
 				if(isset($_GET['msg']) && $_GET['msg']=='success')
