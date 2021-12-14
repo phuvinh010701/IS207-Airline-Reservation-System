@@ -42,7 +42,7 @@
 		</div>
 		<br>
 		<h2>Bạn đã đặt vé thành công</h2>
-		<h3>Phí thanh toán đã nhận &#x20b9; <?php echo $_SESSION['total_amount']; ?><br><br> Mã PNR của bạn là <strong><?php echo $_SESSION['pnr'];?></strong></h3>
+		<h3>Phí thanh toán đã nhận <?php echo $_SESSION['total_amount']; ?> VND<br><br> Mã PNR của bạn là <strong><?php echo $_SESSION['pnr'];?></strong></h3>
 		<!--Following data fields were empty!
 			...
 			ADD VIEW FLIGHT DETAILS AND VIEW JETS/ASSETS DETAILS for ADMIN

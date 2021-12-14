@@ -98,7 +98,7 @@
 							<td>".$departure_time."</td>
 							<td>".$arrival_date."</td>
 							<td>".$arrival_time."</td>
-							<td>&#x20b9; ".$price_economy."</td>
+							<td>".$price_economy." VND</td>
 							<center>
 							<td><input type=\"radio\" name=\"select_flight\" value=\"".$flight_no."\"></td>
 							</center>
