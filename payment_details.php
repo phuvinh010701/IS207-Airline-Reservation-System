@@ -112,32 +112,32 @@
 				echo "<table cellpadding=\"5\"	style='margin-left: 50px'>";
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Giá vé cơ bản:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_ticket_price."</td>";
+				echo "<td class=\"fix_table\">".$total_ticket_price." VND</td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Thức ăn:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_meal_price."</td>";
+				echo "<td class=\"fix_table\">".$total_meal_price." VND</td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Phí ưu tiên Checkin:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_priority_checkin_fee."</td>";
+				echo "<td class=\"fix_table\">".$total_priority_checkin_fee." VND</td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Phí dùng phòng chờ:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_lounge_access_fee."</td>";
+				echo "<td class=\"fix_table\">".$total_lounge_access_fee." VND</td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Phí bảo hiểm:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_insurance_fee."</td>";
+				echo "<td class=\"fix_table\">".$total_insurance_fee." VND</td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<td class=\"fix_table\">Giảm giá:</td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_discount."</td>";
+				echo "<td class=\"fix_table\">".$total_discount." VND</td>";
 				echo "</tr>";
 
 				echo "</table>";
@@ -146,7 +146,7 @@
 				echo "<table cellpadding=\"5\" style='margin-left: 50px'>";
 				echo "<tr>";
 				echo "<td class=\"fix_table\"><strong>Tổng cộng:</strong></td>";
-				echo "<td class=\"fix_table\">&#x20b9; ".$total_amount."</td>";
+				echo "<td class=\"fix_table\">".$total_amount." VND</td>";
 				echo "</tr>";
 				echo "</table>";
 				echo "<hr style='margin-right:900px; margin-left: 50px'>";
